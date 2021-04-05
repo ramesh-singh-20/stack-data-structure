@@ -14,6 +14,11 @@ top(): return the element at the top. Time complexity should be O(1).
 
 isEmpty(): returns true when list is empty. Time complexity should be O(1).
 
+**Utilities**
+
+Reverse LinkedList using Stack. Assumptions are that top() is returning top element without removing and pop() is returning the deleted element.
+
+
 **Note**
 
 In array implementation of stack push has worst case scenario of O(n) when stack is full.
