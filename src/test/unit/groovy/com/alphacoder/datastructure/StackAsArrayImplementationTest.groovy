@@ -173,6 +173,4 @@ class StackAsArrayImplementationTest extends  Specification{
         stack.top()== 2
 
     }
-
-
 }
