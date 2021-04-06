@@ -20,6 +20,8 @@ Reverse LinkedList using Stack. Assumptions are that top() is returning top elem
 
 Check for balanced parenthesis in a given string.
 
+Evaluate post-fix expression. Assumption is expression uses space as a separator.
+
 
 **Note**
 
@@ -31,4 +33,4 @@ Spock framework with Groovy is used for unit testing.
 
 **Note**
 
-To run test cases please mark a groovy folder as Test Resources Root.
+To run test cases please mark test/unit/groovy folder as Test Resources Root.

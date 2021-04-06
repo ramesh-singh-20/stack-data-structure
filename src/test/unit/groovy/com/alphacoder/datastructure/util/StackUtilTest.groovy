@@ -70,4 +70,16 @@ class StackUtilTest extends Specification{
         then:
         !result
     }
+
+    def 'Test StackUtil | evaluatePostFixExpression'(){
+        given:
+        def expression= "23 4 + 4 9 * + 9 -"
+
+        when:
+        def result= StackUtil.evaluatePostFixExpression(expression)
+
+        then:
+        result== "54"
+
+    }
 }
