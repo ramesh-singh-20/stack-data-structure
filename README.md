@@ -18,6 +18,8 @@ isEmpty(): returns true when list is empty. Time complexity should be O(1).
 
 Reverse LinkedList using Stack. Assumptions are that top() is returning top element without removing and pop() is returning the deleted element.
 
+Check for balanced parenthesis in a given string.
+
 
 **Note**
 

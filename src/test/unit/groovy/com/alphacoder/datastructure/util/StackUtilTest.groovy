@@ -26,4 +26,48 @@ class StackUtilTest extends Specification{
         list.get(2)== 2
         list.get(3)== 1
     }
+
+    def 'Test StackUtil | validateBalancedParenthesis() | Empty string'(){
+        given:
+        def expression= "";
+
+        when:
+        def result= StackUtil.validateBalancedParenthesis(expression)
+
+        then:
+        !result
+    }
+
+    def 'Test StackUtil | validateBalancedParenthesis() | unbalanced parenthesis string'(){
+        given:
+        def expression= ")(";
+
+        when:
+        def result= StackUtil.validateBalancedParenthesis(expression)
+
+        then:
+        !result
+    }
+
+    def 'Test StackUtil | validateBalancedParenthesis() | balanced parenthesis string'(){
+        given:
+        def expression= "A+B*(B/C{B*F[R*I]})";
+
+        when:
+        def result= StackUtil.validateBalancedParenthesis(expression)
+
+        then:
+        result
+    }
+
+    def 'Test StackUtil | validateBalancedParenthesis() | unbalanced parenthesis complex string'(){
+        given:
+        def expression= "A+B*(B/C{B*F[R*I}])";
+
+        when:
+        def result= StackUtil.validateBalancedParenthesis(expression)
+
+        then:
+        !result
+    }
 }
