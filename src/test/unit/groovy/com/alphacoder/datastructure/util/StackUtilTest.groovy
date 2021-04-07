@@ -82,4 +82,16 @@ class StackUtilTest extends Specification{
         result== "54"
 
     }
+
+    def 'Test StackUtil | evaluatePreFixExpression'(){
+        given:
+        def expression= "- + + 23 4 * 4 9 9"
+
+        when:
+        def result= StackUtil.evaluatePreFixExpression(expression)
+
+        then:
+        result== "54"
+
+    }
 }

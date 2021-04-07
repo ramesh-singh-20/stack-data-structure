@@ -86,4 +86,20 @@ public class StackUtil {
         }
         return evaluation;
     }
+
+    public static String evaluatePreFixExpression(String expression){
+        String[] arr= expression.split(" ");
+        Stack<String> stringStack= new Stack<>();
+        for(int i=arr.length-1; i>=0; i--){
+            if(!(arr[i].equals("+") || arr[i].equals("-") || arr[i].equals("*") || arr[i].equals("/"))){
+                stringStack.push(arr[i]);
+            }else{
+                String operand1= stringStack.pop();
+                String operand2= stringStack.pop();
+                stringStack.push(evaluateExpression
+                        (Integer.valueOf(operand1), Integer.valueOf(operand2), arr[i]));
+            }
+        }
+        return stringStack.pop();
+    }
 }
