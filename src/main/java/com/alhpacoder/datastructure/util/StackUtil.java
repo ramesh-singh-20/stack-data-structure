@@ -110,22 +110,35 @@ public class StackUtil {
 
         for(String str: arr){
             if(!(str.equalsIgnoreCase("+") || str.equalsIgnoreCase("-")
-               || str.equalsIgnoreCase("*") || str.equalsIgnoreCase("/"))){
+               || str.equalsIgnoreCase("*") || str.equalsIgnoreCase("/")
+               || str.equalsIgnoreCase("(") || str.equalsIgnoreCase(")"))){
                 postFixExpression+= str;
                 postFixExpression+=" ";
 
             }else{
                 if(!stringStack.isEmpty()){
-                    if(str.equalsIgnoreCase("*") || str.equalsIgnoreCase("/")){
+                    if(str.equalsIgnoreCase("*") || str.equalsIgnoreCase("/")
+                      || str.equalsIgnoreCase("(")){
                         stringStack.push(str);
                     }else{
-                        if(stringStack.peek().equalsIgnoreCase("*") ||
-                                stringStack.peek().equalsIgnoreCase("/")){
-                            while(!stringStack.isEmpty()){
-                                postFixExpression+= stringStack.pop();
-                                postFixExpression+=" ";
+                        if(str.equalsIgnoreCase(")")){
+                            while(!stringStack.isEmpty() && !stringStack.peek().equalsIgnoreCase("(")) {
+                                postFixExpression += stringStack.pop();
+                                postFixExpression += " ";
                             }
-                            stringStack.push(str);
+                            stringStack.pop();
+                        }
+                        else{
+                            if(stringStack.peek().equalsIgnoreCase("*")
+                            || stringStack.peek().equalsIgnoreCase("/")){
+                                while(!stringStack.isEmpty() && !stringStack.peek().equalsIgnoreCase("(")) {
+                                    postFixExpression += stringStack.pop();
+                                    postFixExpression += " ";
+                                }
+                                stringStack.push(str);
+                            }else{
+                                stringStack.push(str);
+                            }
                         }
                     }
                 }else{

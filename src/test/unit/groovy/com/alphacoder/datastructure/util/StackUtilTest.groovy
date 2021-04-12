@@ -106,4 +106,28 @@ class StackUtilTest extends Specification{
         result== "2 3 4 * + 6 2 / -"
 
     }
+
+    def 'Test StackUtil | convertInfixToPostfix | expression 1 with parenthesis'(){
+        given:
+        def expression= "( 2 + 3 * 4 - 6 / 2 )"
+
+        when:
+        def result= StackUtil.convertInfixToPostfix(expression)
+
+        then:
+        result== "2 3 4 * + 6 2 / -"
+
+    }
+
+    def 'Test StackUtil | convertInfixToPostfix | expression 2 with parenthesis'(){
+        given:
+        def expression= "( ( ( 2 + 3 ) * 4 ) - 6 / 2 )"
+
+        when:
+        def result= StackUtil.convertInfixToPostfix(expression)
+
+        then:
+        result== "2 3 + 4 * 6 2 / -"
+
+    }
 }
