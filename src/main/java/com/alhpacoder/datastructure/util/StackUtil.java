@@ -103,5 +103,41 @@ public class StackUtil {
         return stringStack.pop();
     }
 
-    p
+    public static String convertInfixToPostfix(String infixExpression){
+        String [] arr= infixExpression.split(" ");
+        Stack<String> stringStack= new Stack<>();
+        String postFixExpression= "";
+
+        for(String str: arr){
+            if(!(str.equalsIgnoreCase("+") || str.equalsIgnoreCase("-")
+               || str.equalsIgnoreCase("*") || str.equalsIgnoreCase("/"))){
+                postFixExpression+= str;
+                postFixExpression+=" ";
+
+            }else{
+                if(!stringStack.isEmpty()){
+                    if(str.equalsIgnoreCase("*") || str.equalsIgnoreCase("/")){
+                        stringStack.push(str);
+                    }else{
+                        if(stringStack.peek().equalsIgnoreCase("*") ||
+                                stringStack.peek().equalsIgnoreCase("/")){
+                            while(!stringStack.isEmpty()){
+                                postFixExpression+= stringStack.pop();
+                                postFixExpression+=" ";
+                            }
+                            stringStack.push(str);
+                        }
+                    }
+                }else{
+                    stringStack.push(str);
+                }
+            }
+        }
+        while(!stringStack.isEmpty()){
+            postFixExpression+= stringStack.pop();
+            postFixExpression+=" ";
+        }
+        postFixExpression= postFixExpression.substring(0, postFixExpression.length()-1);
+        return postFixExpression;
+    }
 }
