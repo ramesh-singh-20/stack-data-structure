@@ -22,6 +22,8 @@ Check for balanced parenthesis in a given string.
 
 Evaluate post-fix expression. Assumption is expression uses space as a separator.
 
+Conversion of infix to postfix expression. Assumption is expression uses space as a separator.
+
 
 **Note**
 
